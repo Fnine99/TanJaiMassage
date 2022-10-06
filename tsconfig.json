@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "target": "esnext",
+        "module": "commonjs",
+        "baseUrl": "src",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}
