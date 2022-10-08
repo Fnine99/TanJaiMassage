@@ -78,9 +78,9 @@
         {
           "bracketSpacing": true,
           "printWidth": 140,
-          "singleQuote": true,
+          "doubleQuote": true,
           "trailingComma": "none",
-          "tabWidth": 2,
+          "tabWidth": 1,
           "useTabs": false,
           "endOfLine": "auto"
         }

@@ -8,8 +8,9 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "lib": ["es6", "dom"]
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "src/custom.d.ts"],
     "exclude": ["node_modules"]
 }
