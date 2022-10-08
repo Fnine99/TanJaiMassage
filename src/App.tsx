@@ -1,9 +1,9 @@
-
+import Routes from 'routes'
 
 const App = () => {
   return (
-    <div>New App</div>
+    <Routes />
   )
 }
 
-export default App;
+export default App
