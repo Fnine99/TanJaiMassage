@@ -1,34 +1,23 @@
 // mui imports
-import {
-  Box,
+// import {
+//   Box,
   
-} from '@mui/material'
+// } from '@mui/material'
+
+// project imports
+import Hero from 'sections/Hero'
+import Benefits from 'sections/Benefits'
+import Touch from 'sections/Touch'
+import Discover from 'sections/Discover'
 
 const Home = () => {
   return (
-    <Box
-     sx={{
-      position: 'relative',
-      bgcolor: 'grey.800',
-      overflow: 'hidden',
-      minHeight: '100vh',
-      '&>*': {
-        position: 'relative',
-        zIndex: 5
-      },
-      '&:before': {
-        content: '""',
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        top: 0,
-        left: 0,
-        zIndex: 2,
-        background: 'linear-gradient(329.36deg, #000000 14.79%, rgba(67, 67, 67, 0.28) 64.86%);'
-      }
-    }}>
-
-    </Box>
+    <>
+      <Hero />
+      <Benefits />
+      <Touch />
+      <Discover />
+    </>
   )
 }
 

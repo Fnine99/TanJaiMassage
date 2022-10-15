@@ -1,10 +1,11 @@
 import { Link as RouterLink } from 'react-router-dom';
 
 // project imports
-import logo from 'assets/logo.svg' 
+import logo from 'assets/logo.svg'
+
 // mui imports
-import AppBar from '@mui/material/AppBar'
 import {
+  AppBar,
   // useMediaQuery,
   Box,
   // Button,
@@ -37,7 +38,7 @@ const Header = () => {
           <Toolbar sx={{ px: { xs: 1.5, md: 0, lg: 0 }, py: 0 }}>
             <Stack direction="row" sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' } }} alignItems="center">
               <ButtonBase href="/">
-                <img src={logo} alt='Tan Jai' width='76' height='45'/>
+                <img src={logo} alt=''width='75px' height='45px' />
               </ButtonBase>
             </Stack>
             <Stack
@@ -52,7 +53,7 @@ const Header = () => {
                 className="header-link" 
                 color="white" 
                 component="a"
-                href="/#Features"
+                href="/#features"
                 underline="none"
               >
                 Features

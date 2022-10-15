@@ -1,19 +1,17 @@
 
-
 // mui imports
 import {
     Box,
-    
 } from '@mui/material'
 
-const Header = () => {
+const Touch = () => {
   return (
     <Box
      sx={{
       position: 'relative',
       bgcolor: 'grey.800',
       overflow: 'hidden',
-      minHeight: '100vh',
+      minHeight: '55vh',
       '&>*': {
         position: 'relative',
         zIndex: 5
@@ -29,9 +27,9 @@ const Header = () => {
         background: 'linear-gradient(329.36deg, #000000 14.79%, rgba(67, 67, 67, 0.28) 64.86%);'
       }
     }}>
-
+        Touch
     </Box>
   )
 }
 
-export default Header
+export default Touch
