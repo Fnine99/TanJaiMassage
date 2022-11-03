@@ -1,8 +1,7 @@
 // mui imports
-// import {
-//   Box,
-  
-// } from '@mui/material'
+import {
+  Paper
+} from '@mui/material'
 
 // project imports
 import Hero from 'sections/Hero'
@@ -14,9 +13,11 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <Benefits />
-      <Touch />
-      <Discover />
+      <Paper elevation={10} square sx={{ backgroundColor: 'beige' }}>
+        <Benefits />
+        <Touch />
+        <Discover /> 
+      </Paper>
     </>
   )
 }

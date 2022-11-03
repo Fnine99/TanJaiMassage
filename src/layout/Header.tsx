@@ -1,16 +1,17 @@
 import { Link as RouterLink } from 'react-router-dom';
 
+import { useState } from 'react';
+
 // project imports
-import logo from 'assets/logo.svg'
+// import logo from 'assets/logo.svg'
 
 // mui imports
 import {
   AppBar,
-  // useMediaQuery,
   Box,
   // Button,
   Chip,
-  Container,
+  // Container,
   Drawer,
   Link,
   List,
@@ -18,93 +19,105 @@ import {
   ListItemIcon,
   ListItemText,
   Stack,
-  Toolbar,
-  // Typography,
   ButtonBase,
-  // IconButton
+  Typography,
+  IconButton,
+  // useMediaQuery,
   // useScrollTrigger
 } from '@mui/material';
 
 
-// const pages = ['Products', 'Pricing', 'Blog'];
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faShop, faSquarePhone, faLanguage } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
 
+  const [drawerToggle, setDrawerToggle] = useState(false);
+
+  const handleDrawerToggle = () => {
+    return setDrawerToggle(!drawerToggle)
+  }
+
   return (
+    
     // <ElevationScroll layout={layout} {...others}>
-      <AppBar sx={{bgcolor: 'transparent', boxShadow: 'none' }}>
-        <Container disableGutters>
-          <Toolbar sx={{ px: { xs: 1.5, md: 0, lg: 0 }, py: 0 }}>
-            <Stack direction="row" sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' } }} alignItems="center">
-              <ButtonBase href="/">
-                <img src={logo} alt=''width='75px' height='45px' />
-              </ButtonBase>
-            </Stack>
+      <AppBar sx={{bgcolor: 'gray', boxShadow: 'none' }}>
+          <Box sx={{width:'100%', px: { xs: 1.5, md: 0, lg: 0 }, pb: 0 }}>
+
             <Stack
               direction="row"
               sx={{
-                '& .header-link': { px: 1, '&:hover': { color: 'pink' } },
-                display: { xs: 'none', md: 'block' }
+                flexGrow: 1,
+                '& .header-link': { px: 1, '&:hover': { color: 'lightgreen' } },
+                // display: { xs: 'none', md: 'block' }
               }}
-              spacing={2}
+              // spacing={2}
+              alignItems="center"
+              justifyContent="space-between"
             >
-              <Link 
-                className="header-link" 
-                color="white" 
-                component="a"
-                href="/#features"
-                underline="none"
-              >
-                Features
-              </Link>
-              <Link 
-                className="header-link" 
-                color="white" 
-                component="a"
-                href="/#Features"
-                // target="_blank" 
-                underline="none"
-              >
-                Data
-              </Link>
-              <Link
-                className="header-link"
-                color={'white'}
-                component={RouterLink}
-                to="/components-overview/buttons"
-                underline="none"
-              >
-                Pricing
-              </Link>
-              <Link className="header-link" color="white" href="https://codedthemes.gitbook.io/mantis/" target="_blank" underline="none">
-                About
-              </Link>
-              <Box sx={{ display: 'inline-block' }}>
-                {/* <AnimateButton>
+              <Stack direction="row">
+                {/* Shop button */}
+                <Box sx={{ display: 'inline-block' }}>
+                  <IconButton
+                    component={RouterLink}
+                    to="/shop"
+                    // onClick={handleToggle}
+                  >
+                    <FontAwesomeIcon icon={faShop} style={{ fontSize: 20 }} color="primary"/>
+                  </IconButton>
+                </Box>
+
+                {/* Contact button */}
+                <Box sx={{ display: 'inline-block' }}>
                   <IconButton
                     component={RouterLink}
                     to="/login"
                     // onClick={handleToggle}
                   >
-                    <UserOutlined  style={{ fontSize: 20 }} color="primary" />
+                    <FontAwesomeIcon icon={faSquarePhone} style={{ fontSize: 20 }} color="primary"/>
                   </IconButton>
-                </AnimateButton> */}
-              </Box>
-              <Box sx={{ display: 'inline-block' }}>
-                {/* <AnimateButton>
-                  <Button
-                    component={RouterLink}
-                    to="/register"
-                    disableElevation
-                    color="primary"
-                    variant="contained"
+                  {/* Number Link */}
+                  <Link 
+                    className="header-link" 
+                    // color="white"
+                    component="a"
+                    href="/#features"
+                    underline="none"
                   >
-                    Get started
-                  </Button>
-                </AnimateButton> */}
+                    514-555-5555
+                  </Link>
+                </Box>
+
+                {/* Language Toggle button */}
+                <Box sx={{ display: 'inline-block' }}>
+                  <IconButton
+                    component={RouterLink}
+                    to="/login"
+                    // onClick={handleToggle}
+                  >
+                    <FontAwesomeIcon icon={faLanguage}  style={{ fontSize: 20 }} color="primary" />
+                  </IconButton>
+                </Box>
+              </Stack>              
+
+              {/* Logo */}
+              <Box>
+                <ButtonBase href="/">
+                  <Typography color={"pink"}>Logo</Typography>
+                  {/* <img src={logo} alt=''width='75px' height='45px' /> */}
+                </ButtonBase>
               </Box>
+              
+              {/* Hamburger */}
+              <Box sx={{ display: 'inline-block' }}>
+                <IconButton
+                  onClick={handleDrawerToggle}
+                >
+                  <FontAwesomeIcon icon={faBars} style={{ fontSize: 20 }} color="primary"/>
+                </IconButton>
+              </Box>
+
             </Stack>
+
             <Box
               sx={{
                 width: '100%',
@@ -113,50 +126,10 @@ const Header = () => {
                 display: { xs: 'flex', md: 'none' }
               }}
             >
-              {/* <Typography component="div" sx={{ textAlign: 'left', display: 'inline-block' }}>
-                <Logo reverse to="/" />
-              </Typography> */}
-              <Stack direction="row" spacing={2}>
-                {/* replace by islogin? */}
-                {/* {layout === 'component' && (
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="warning"
-                    component={RouterLink}
-                    to={config.defaultPath}
-                    sx={{ mt: 0.5, height: 28 }}
-                  >
-                    Dashboard
-                  </Button>
-                )} */}
-                {/* {layout !== 'component' && (
-                  <Button
-                    variant="contained"
-                    size="medium"
-                    color="primary"
-                    component={RouterLink}
-                    to="/register"
-                    sx={{ mt: 0.5, height: 28 }}
-                  >
-                    Get started
-                  </Button>
-                )} */}
-{/* 
-                <IconButton
-                  color="secondary"
-                  {...(layout === 'component' ? { onClick: handleDrawerOpen } : { onClick: drawerToggler(true) })}
-                  sx={{
-                    '&:hover': { bgcolor: theme.palette.mode === 'dark' ? 'secondary.lighter' : 'secondary.dark' }
-                  }}
-                >
-                  <MenuOutlined style={{ color: 'inherit' }} />
-                </IconButton> */}
-              </Stack>
               <Drawer
                 anchor="top"
-                // open={drawerToggle}
-                // onClose={drawerToggler(false)}
+                open={drawerToggle}
+                onClose={handleDrawerToggle}
                 sx={{ '& .MuiDrawer-paper': { backgroundImage: 'none' } }}
               >
                 <Box
@@ -168,8 +141,8 @@ const Header = () => {
                     }
                   }}
                   role="presentation"
-                  // onClick={drawerToggler(false)}
-                  // onKeyDown={drawerToggler(false)}
+                  onClick={handleDrawerToggle}
+                  onKeyDown={handleDrawerToggle}
                 >
                   <List>
                     <Link style={{ textDecoration: 'none' }} href="#Features">
@@ -226,9 +199,8 @@ const Header = () => {
                 </Box>
               </Drawer>
             </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
+          </Box>
+       </AppBar>
     // </ElevationScroll>
   );
 };

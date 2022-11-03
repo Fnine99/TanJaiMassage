@@ -3,32 +3,61 @@
 // mui imports
 import {
     Box,
+    Grid,
+    Typography,
+    // Button,
 } from '@mui/material'
+
+// project imports
+import Carrousel from './Carrousel'
 
 const Benefits = () => {
   return (
     <Box
-     sx={{
+    sx={{ 
       position: 'relative',
-      bgcolor: 'grey.800',
       overflow: 'hidden',
-      minHeight: '55vh',
-      '&>*': {
-        position: 'relative',
-        zIndex: 5
-      },
-      '&:before': {
-        content: '""',
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        top: 0,
-        left: 0,
-        zIndex: 2,
-        background: 'linear-gradient(329.36deg, #000000 14.79%, rgba(67, 67, 67, 0.28) 64.86%);'
-      }
+      minHeight: '55vh'
     }}>
-        Benefits
+      <Grid 
+        container
+        sx={{ 
+          position: 'relative',
+          overflow: 'hidden',
+          minHeight: '55vh'
+        }}>
+        {/* Massage Benefits Text */}
+        <Grid item xs={6} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <Box
+            width="90%"
+            height="90%"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              // backgroundColor: "pink",
+              borderRadius: "20px",
+            }}
+          >
+            <Typography>
+              Massage Benefits
+            </Typography>
+          </Box>
+        </Grid>
+
+        {/* Photo Gallery */}
+        <Grid item xs={6}>
+            <Box
+              sx={{
+                display: "flex",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Carrousel/>
+          </Box>
+        </Grid> 
+      </Grid>
     </Box>
   )
 }
