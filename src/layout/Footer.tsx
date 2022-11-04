@@ -9,7 +9,7 @@ const Footer = () => {
     <Box
      sx={{
       position: 'relative',
-      bgcolor: 'grey.800',
+      backgroundColor: 'beige',
       overflow: 'hidden',
       minHeight: '25vh',
       '&>*': {

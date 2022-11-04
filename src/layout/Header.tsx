@@ -10,14 +10,8 @@ import {
   AppBar,
   Box,
   // Button,
-  Chip,
   // Container,
-  Drawer,
   Link,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Stack,
   ButtonBase,
   Typography,
@@ -26,6 +20,8 @@ import {
   // useScrollTrigger
 } from '@mui/material';
 
+// project imports
+import Drawer from 'layout/components/Drawer'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faShop, faSquarePhone, faLanguage } from '@fortawesome/free-solid-svg-icons';
@@ -126,78 +122,7 @@ const Header = () => {
                 display: { xs: 'flex', md: 'none' }
               }}
             >
-              <Drawer
-                anchor="top"
-                open={drawerToggle}
-                onClose={handleDrawerToggle}
-                sx={{ '& .MuiDrawer-paper': { backgroundImage: 'none' } }}
-              >
-                <Box
-                  sx={{
-                    width: 'auto',
-                    '& .MuiListItemIcon-root': {
-                      fontSize: '1rem',
-                      minWidth: 28
-                    }
-                  }}
-                  role="presentation"
-                  onClick={handleDrawerToggle}
-                  onKeyDown={handleDrawerToggle}
-                >
-                  <List>
-                    <Link style={{ textDecoration: 'none' }} href="#Features">
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          {/* <LineOutlined /> */}
-                        </ListItemIcon>
-                        <ListItemText primary="Features" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="#Features">
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          {/* <LineOutlined /> */}
-                        </ListItemIcon>
-                        <ListItemText primary="Data" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link
-                      style={{ textDecoration: 'none' }} href="#Features">
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          {/* <LineOutlined /> */}
-                        </ListItemIcon>
-                        <ListItemText primary="Pricing" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="/">
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          {/* <LineOutlined /> */}
-                        </ListItemIcon>
-                        <ListItemText primary="About" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="/login" >
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          {/* <LineOutlined /> */}
-                        </ListItemIcon>
-                        <ListItemText primary="Log in" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="/register" >
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          {/* <LineOutlined /> */}
-                        </ListItemIcon>
-                        <ListItemText primary="Start your free trial" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                        <Chip color="primary" label="v1.0" size="small" />
-                      </ListItemButton>
-                    </Link>
-                  </List>
-                </Box>
-              </Drawer>
+              <Drawer open={drawerToggle} onToggle={handleDrawerToggle}/>
             </Box>
           </Box>
        </AppBar>
