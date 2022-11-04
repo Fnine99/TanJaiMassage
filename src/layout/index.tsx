@@ -12,16 +12,18 @@ import {
 const Layout = () => {
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
-      <Header />
+      <Header />     
       <Box 
         component="main" 
         sx={{ 
         width: '100%', 
-        flexGrow: 1,
+        // flexGrow: 1,
         position: 'relative',
         minHeight: 'calc(100vh - 150px)', 
-        display: 'flex', 
-        flexDirection: 'column'
+        display: 'flex',
+        flexDirection: 'column',
+        zIndex: 1,
+        // pt: 50
         }}>
         <Outlet />
         <Footer />

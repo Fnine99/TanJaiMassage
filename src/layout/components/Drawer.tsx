@@ -1,12 +1,12 @@
 // mui imports
 import {
     Box,
-    Chip,
     Drawer,
     Link,
     List,
-    ListItemButton,
-    ListItemIcon,
+    ListItem,
+    // ListItemButton,
+    // ListItemIcon,
     ListItemText
 } from '@mui/material';
 
@@ -15,90 +15,74 @@ interface DrawerProps {
     onToggle: ()=>void;
 }
 
-const TopDrawer = ( props: DrawerProps) => {
+const drawerItems = [
+        {name: 'Services', href: '/'},
+        {name: 'Women Care', href: '/'}, 
+        {name: 'Women', href: '/'}, 
+        {name: 'Promotions', href: '/'},
+        {name: 'Policies', href: ''},
+        {name: 'About Us', href: ''}
+    ] 
+    
+const TopDrawer = ( drawer: DrawerProps) => {
+    
 
 
   return (
     <Drawer
-    anchor="right"
-    open={props.open}
-    onClose={props.onToggle}
+    anchor="top"
+    open={drawer.open}
+    onClose={drawer.onToggle}
     sx={{ '& .MuiDrawer-paper': {
         backgroundImage: 'none', 
-        width: '', 
+        // width: '', 
         height:'50%', 
-        borderRadius: '50% 0 50% 50%',
-
+        // borderRadius: '50% 0 50% 50%',
+        justifyContent: 'center',
+        alignItems:'center'
     } 
     }}
     >
     <Box
         sx={{
         width: 'auto',
-        '& .MuiListItemIcon-root': {
+        '& .MuiListItem-root': {
             fontSize: '1rem',
-            minWidth: 28
+            minWidth: 28,
+            justifyContent: 'center',
         }
         }}
         role="presentation"
-        onClick={props.onToggle}
-        onKeyDown={props.onToggle}
+        onClick={drawer.onToggle}
+        onKeyDown={drawer.onToggle}
     >
         <List>
-        <Link style={{ textDecoration: 'none' }} href="#Features">
-            <ListItemButton component="span">
-            <ListItemIcon>
-                {/* <LineOutlined /> */}
-            </ListItemIcon>
-            <ListItemText primary="Features" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-            </ListItemButton>
-        </Link>
-        <Link style={{ textDecoration: 'none' }} href="#Features">
-            <ListItemButton component="span">
-            <ListItemIcon>
-                {/* <LineOutlined /> */}
-            </ListItemIcon>
-            <ListItemText primary="Data" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-            </ListItemButton>
-        </Link>
-        <Link
-            style={{ textDecoration: 'none' }} href="#Features">
-            <ListItemButton component="span">
-            <ListItemIcon>
-                {/* <LineOutlined /> */}
-            </ListItemIcon>
-            <ListItemText primary="Pricing" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-            </ListItemButton>
-        </Link>
-        <Link style={{ textDecoration: 'none' }} href="/">
-            <ListItemButton component="span">
-            <ListItemIcon>
-                {/* <LineOutlined /> */}
-            </ListItemIcon>
-            <ListItemText primary="About" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-            </ListItemButton>
-        </Link>
-        <Link style={{ textDecoration: 'none' }} href="/login" >
-            <ListItemButton component="span">
-            <ListItemIcon>
-                {/* <LineOutlined /> */}
-            </ListItemIcon>
-            <ListItemText primary="Log in" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-            </ListItemButton>
-        </Link>
-        <Link style={{ textDecoration: 'none' }} href="/register" >
-            <ListItemButton component="span">
-            <ListItemIcon>
-                {/* <LineOutlined /> */}
-            </ListItemIcon>
-            <ListItemText primary="Start your free trial" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-            <Chip color="primary" label="v1.0" size="small" />
-            </ListItemButton>
-        </Link>
+            {/* Language Toggle button */}
+            {/* <IconButton
+                component={RouterLink}
+                to="/login"
+                // onClick={handleToggle}
+              >
+                <FontAwesomeIcon icon={faLanguage}  style={{ fontSize: 20 }} color="primary" />
+            </IconButton> */}
+
+            {drawerItems.map((item, index) => {
+                return (
+                    <ListItem key={index}>
+                        <Link 
+                        style={{ textDecoration: 'none'}} 
+                        href={item.href} 
+                        >
+                            <ListItemText primary={item.name} 
+                                primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
+                        </Link>
+                    </ListItem>
+                )
+            })}
         </List>
     </Box>
     </Drawer>
   )
 }
 
-export default TopDrawer
+export default TopDrawer;

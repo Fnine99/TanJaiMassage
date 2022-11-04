@@ -37,22 +37,24 @@ const images = [
 const Benefits = () => {
   return (
     <Box
-    sx={{ 
-      position: 'relative',
-      overflow: 'hidden',
-      minHeight: '55vh'
-    }}>
+      sx={{ 
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: '80vh'
+      }}
+    >
       <Grid 
         container
         sx={{ 
           position: 'relative',
           overflow: 'hidden',
-          minHeight: '55vh'
+          minHeight: '65vh',
+
         }}>
         {/* Massage Benefits Text */}
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <Box
-            width="90%"
+            width="70%"
             height="90%"
             sx={{
               display: "flex",
@@ -63,7 +65,11 @@ const Benefits = () => {
             }}
           >
             <Typography>
-              Massage Benefits
+            Other than all the benefits of massage mentioned here, touch is a fundamental human need.
+            Touch is essential for babies development for their physical,
+             emotional and eventually social health. In fact, 
+             touch is the first of the five senses to develop. The need for positive touch, 
+             the connection, and reassurance that touch brings is literally in our DNA.
             </Typography>
           </Box>
         </Grid>

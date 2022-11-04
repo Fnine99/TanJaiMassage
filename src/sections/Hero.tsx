@@ -10,9 +10,9 @@ const Hero = () => {
     <Box
      sx={{
       position: 'relative',
-      backgroundColor : '',
+      backgroundColor : 'whitesmoke',
       overflow: 'hidden',
-      minHeight: '100vh',
+      minHeight: 'calc(100vh - 50px)',
       '&>*': {
         position: 'relative',
         // zIndex: 5
@@ -24,7 +24,7 @@ const Hero = () => {
         height: '100%',
         top: 0,
         left: 0,
-        zIndex: 2,
+        // zIndex: 2,
         background: 'pink'
       }
     }}>

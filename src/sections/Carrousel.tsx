@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
+// import MobileStepper from '@mui/material/MobileStepper';
+// import Paper from '@mui/material/Paper';
+// import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
@@ -35,8 +35,15 @@ const Carrousel = ( images : CarrouselProp) => {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-      <Paper
+    <Box 
+      sx={{ 
+        width: 'auto',
+        // maxWidth: 400,
+        flexGrow: 1, 
+        display: 'flex',
+        flexDirection: 'row'
+      }}>
+      {/* <Paper
         square
         elevation={0}
         sx={{
@@ -48,7 +55,28 @@ const Carrousel = ( images : CarrouselProp) => {
         }}
       >
         <Typography>{images.images[activeStep].label}</Typography>
-      </Paper>
+      </Paper> */}
+      <Box
+        sx={{ 
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <Button 
+          size="small" 
+          onClick={handleBack} 
+          disabled={activeStep === 0}
+          // sx={{ justifyContent: 'end' }}
+        >
+          {theme.direction === 'rtl' ? (
+            <KeyboardArrowRight />
+          ) : (
+            <KeyboardArrowLeft />
+          )}
+        </Button>
+      </Box>
+
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
@@ -61,9 +89,10 @@ const Carrousel = ( images : CarrouselProp) => {
               <Box
                 component="img"
                 sx={{
-                  height: 255,
+                  height: '100%',
                   display: 'block',
-                  maxWidth: 400,
+                  // maxWidth: 400,
+                  // maxHeight: 400,
                   overflow: 'hidden',
                   width: '100%',
                 }}
@@ -74,7 +103,31 @@ const Carrousel = ( images : CarrouselProp) => {
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      <MobileStepper
+
+      <Box
+        sx={{ 
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <Button
+          size="small"
+          onClick={handleNext}
+          disabled={activeStep === maxSteps - 1}
+          sx={{
+
+          }}
+        >
+          {theme.direction === 'rtl' ? (
+            <KeyboardArrowLeft />
+          ) : (
+            <KeyboardArrowRight />
+        )}
+        </Button>
+      </Box>
+
+      {/* <MobileStepper
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
@@ -102,7 +155,7 @@ const Carrousel = ( images : CarrouselProp) => {
             Back
           </Button>
         }
-      />
+      /> */}
     </Box>
   );
 }

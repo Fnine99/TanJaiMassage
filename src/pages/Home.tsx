@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <Paper elevation={10} square sx={{ backgroundColor: 'whitesmoke' }}>
+      <Paper elevation={15} square sx={{ backgroundColor: 'whitesmoke', zIndex: 2}}>
         <Benefits />
         <Touch />
         <Discover /> 
