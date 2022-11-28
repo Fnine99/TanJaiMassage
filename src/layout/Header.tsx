@@ -1,6 +1,6 @@
 import { Link as RouterLink } from 'react-router-dom';
 
-import { useState } from 'react';
+import { Fragment } from 'react';
 
 // project imports
 // import logo from 'assets/logo.svg'
@@ -17,35 +17,76 @@ import {
   Typography,
   IconButton,
   Grid,
+  // Fade,
   // useMediaQuery,
-  // useScrollTrigger
+  useScrollTrigger,
+  CssBaseline,
 } from '@mui/material';
 
 // project imports
-import Drawer from 'layout/components/Drawer'
+// import Drawer from 'layout/components/Drawer'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faShop, faSquarePhone } from '@fortawesome/free-solid-svg-icons';
+import { faShop, faSquarePhone } from '@fortawesome/free-solid-svg-icons';
+// import { link } from 'fs';
+
+interface Props {
+  window? : ()=> Window;
+  // children? : ReactElement;
+}
+
+// function ScrollEvents(props: Props){
+//   const {children, window} = props;
+//   const trigger = useScrollTrigger({
+//     target: window ? window() : undefined,
+//   });
+//   return(
+//     <Fade in={!trigger}>
+//       {children}
+//     </Fade>
+//   )
+// }
 
 
-const Header = () => {
+const Header = (props:Props) => {
+  const {window} = props;
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    disableHysteresis:true,
+    threshold: 20
+  });
 
-  const [drawerToggle, setDrawerToggle] = useState(false);
+  const linkItems = [
+    {name: 'Services', href: '/services'},
+    {name: 'Women Care', href: '/women'}, 
+    {name: 'Pricing', href: '/pricing'},
+    // {name: 'Meet The Team!', href: '/team'},
+    // {name: 'About Us', href: '/about-us'}
+  ] 
 
-  const handleDrawerToggle = () => {
-    return setDrawerToggle(!drawerToggle)
-  }
+  // const [drawerToggle, setDrawerToggle] = useState(false);
+
+  // const handleDrawerToggle = (prop: Props) => {
+  //   return setDrawerToggle(!drawerToggle)
+  // }
 
   return (
-    
-    // <ElevationScroll layout={layout} {...others}>
-      <AppBar sx={{ backgroundColor: 'lightblue', boxShadow: 'none', height: 50 }}>
+    <Fragment>
+    <CssBaseline>
+    {/* <ScrollEvents {...props}> */}
+      <AppBar 
+        sx={{ 
+          backgroundColor: 'white',
+          boxShadow: trigger? '0 0 0 1': 'none', 
+          height: trigger? 65:80, 
+        }}
+      >
         <Grid 
           container 
           sx={{
             width:'100%',
             height: '100%',
-            maxHeight: 50 , 
+            maxHeight: 50, 
             px: { xs: 1.5, md: 0, lg: 0 }, 
             pb: 0,
             alignItems: 'center'
@@ -56,9 +97,7 @@ const Header = () => {
 
             <Box sx={{ display: 'flex', flexDirection: 'row', pl: 4 }}>
               <IconButton
-                component={RouterLink}
-                to="/shop"
-                // onClick={handleToggle}
+                href='shop'
               >
                 <FontAwesomeIcon icon={faShop} style={{ fontSize: 20 }} color="primary"/>
               </IconButton>
@@ -98,28 +137,30 @@ const Header = () => {
           </Grid>
 
           <Grid item xs={4}>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', pr: 4}}>
-              <IconButton
-                onClick={handleDrawerToggle}
-              >
-                <FontAwesomeIcon icon={faBars} style={{ fontSize: 20 }} color="primary"/>
-              </IconButton>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', pr: 2}}>
+              {linkItems.map((link, key)=>{
+                return (
+                  <Link 
+                    className="header-link" 
+                    color="black"
+                    component="a"
+                    href={link.href}
+                    underline="hover"
+                    key={key}
+                    sx={{pr: 4 }}
+                  >
+                    {link.name}
+                  </Link>
+                )
+              })}
             </Box>
           </Grid>
 
         </Grid>
-        <Box
-          sx={{
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            display: { xs: 'flex', md: 'none' }
-          }}
-        >
-          <Drawer open={drawerToggle} onToggle={handleDrawerToggle}/>
-        </Box>
       </AppBar>
-    // </ElevationScroll>
+     {/* </ScrollEvents> */}
+     </CssBaseline>
+     </Fragment>
   );
 };
 export default Header

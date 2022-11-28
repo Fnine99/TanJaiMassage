@@ -12,10 +12,10 @@ const Footer = () => {
       backgroundColor: 'beige',
       overflow: 'hidden',
       minHeight: '25vh',
-      '&>*': {
-        position: 'relative',
-        zIndex: 5
-      }
+      // '&>*': {
+      //   position: 'relative',
+      //   zIndex: 5
+      // }
     }}>
       Footer
     </Box>

@@ -16,13 +16,12 @@ interface DrawerProps {
 }
 
 const drawerItems = [
-        {name: 'Services', href: '/'},
-        {name: 'Women Care', href: '/'}, 
-        {name: 'Women', href: '/'}, 
-        {name: 'Promotions', href: '/'},
-        {name: 'Policies', href: ''},
-        {name: 'About Us', href: ''}
-    ] 
+    {name: 'Services', href: '/services'},
+    {name: 'Women Care', href: '/women'}, 
+    {name: 'Pricing and Promotions', href: '/pricing'},
+    {name: 'Meet The Team!', href: '/team'},
+    {name: 'About Us', href: '/about-us'}
+] 
     
 const TopDrawer = ( drawer: DrawerProps) => {
     
